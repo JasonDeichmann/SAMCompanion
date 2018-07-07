@@ -52,24 +52,37 @@ public class Companion extends AppCompatActivity {
         final EditText edit_txt = (EditText) findViewById(R.id.editTextChatMessage);
 
         //Get data from firebase
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<List<ChatModel>> type = new GenericTypeIndicator<List<ChatModel>>(){};
-                newData = dataSnapshot.getValue(type);
-                list.clear();
-                list.addAll(newData);
-                chatModelList.clear();
-                chatModelList.addAll(newData);
-                chatAdapter.notifyDataSetChanged();
-            }
+        try {
+            ValueEventListener postListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    GenericTypeIndicator<List<ChatModel>> type = new GenericTypeIndicator<List<ChatModel>>() {
+                    };
+                    newData = dataSnapshot.getValue(type);
+                    if(newData != null) {
+                        list.clear();
+                        list.addAll(newData);
+                        chatModelList.clear();
+                        chatModelList.addAll(newData);
+                        chatAdapter.notifyDataSetChanged();
+                    }
+                    else{
+                        list.clear();
+                        chatModelList.clear();
+                        chatAdapter.notifyDataSetChanged();
+                    }
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.i("Error", "error");
-            }
-        };
-        mDatabase.addValueEventListener(postListener);
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.i("Error", "error");
+                }
+            };
+            mDatabase.addValueEventListener(postListener);
+        }catch(Exception e){
+            Log.i("Error", "firebase error retrieving data");
+        }
+
 
 
 
