@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+
+        android:id="@+id/id_menu_community"
+        android:icon="@drawable/ic_public"
+        android:title="Community" />
+    <item
+
+        android:id="@+id/id_menu_games"
+        android:icon="@drawable/ic_videogame"
+        android:title="Games" />
+    <item
+
+        android:id="@+id/id_menu_sam"
+        android:icon="@drawable/ic_face"
+        android:title="SAM"
+        />
+    <item
+
+        android:id="@+id/id_menu_partners"
+        android:icon="@drawable/ic_group_add"
+        android:title="Partners" />
+    <item
+
+        android:id="@+id/id_menu_exercise"
+        android:icon="@drawable/ic_directions_run"
+        android:title="Exercise" />
+
+
+</menu>
