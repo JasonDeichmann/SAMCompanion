@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "820954177611",
+    "firebase_url": "https://sam-companion.firebaseio.com",
+    "project_id": "sam-companion",
+    "storage_bucket": "sam-companion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820954177611:android:4620ca08fe0f59ce",
+        "android_client_info": {
+          "package_name": "com.example.kayletiu.samcompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "820954177611-7ji1uug5ajtom36dl032ohk3bq84o8en.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kayletiu.samcompanion",
+            "certificate_hash": "aa0ce52ace3f13e11f07addc920e370d3543fbc0"
+          }
+        },
+        {
+          "client_id": "820954177611-ou00smuqk85uqfsnlpht91uffrejpoeh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEBGNK6qztFaZIuLEDnXKFfI1Apr6XZ8w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "820954177611-ou00smuqk85uqfsnlpht91uffrejpoeh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
