@@ -180,7 +180,7 @@ public class Home extends Fragment {
 
 
 
-
+        //wew
 
         recyclerView = (RecyclerView) view.findViewById(R.id.post_recylerview);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
