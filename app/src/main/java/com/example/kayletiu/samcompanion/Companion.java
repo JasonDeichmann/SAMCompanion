@@ -84,6 +84,8 @@ public class Companion extends AppCompatActivity {
                             Integer latestUserID = userData.get(userData.size() - 1) + 1;
                             Log.i("userID-NextHighest", Integer.toString(latestUserID));
                             userData.add(latestUserID);
+                            editor.putInt("userID", latestUserID);
+                            editor.apply();
                             //Write to database
                             usersDatabase.setValue(userData);
                         }
