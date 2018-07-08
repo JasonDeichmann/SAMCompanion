@@ -18,6 +18,14 @@
         </activity>
         <activity android:name=".Companion"></activity>
         <activity android:name=".GamesActivity"></activity>
+        <activity
+            android:name=".AddPost"
+            android:label="@string/title_activity_add_post"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ReplyPost"
+            android:label="@string/title_activity_reply_post"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

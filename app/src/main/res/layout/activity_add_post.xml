@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kayletiu.samcompanion.AddPost">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="567dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="27dp"
+            android:text="Back" />
+
+        <EditText
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btn_back"
+            android:layout_below="@+id/btn_back"
+            android:layout_marginTop="23dp"
+            android:contentDescription="Title"
+            android:ems="10"
+            android:hint="Title..."
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/text_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/text_title"
+            android:layout_below="@+id/text_title"
+            android:layout_marginTop="34dp"
+            android:contentDescription="Write something here..."
+            android:ems="10"
+            android:hint="Write something here..."
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/text_post"
+            android:layout_below="@+id/text_post"
+            android:layout_marginTop="36dp"
+            android:text="Send" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/btn_send"
+            android:layout_marginTop="17dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
