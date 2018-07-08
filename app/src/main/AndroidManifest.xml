@@ -16,9 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Companion"></activity>
+        <activity android:name=".Companion">
+
+        </activity>
         <activity android:name=".GamesActivity.GamesActivity"></activity>
         <activity android:name=".GamesActivity.InGame"/>
+        <activity android:name=".Exercise"/>
         <activity
             android:name=".AddPost"
             android:label="@string/title_activity_add_post"
