@@ -7,12 +7,14 @@ package com.example.kayletiu.samcompanion;
 public class ChatModel {
 
     private String message;
+    private Integer userID;
 
 
     public ChatModel(){}
 
-    public ChatModel(String message){
+    public ChatModel(String message, Integer userID){
         this.message = message;
+        this.userID = userID;
     }
 
     public String getMessage(){
@@ -22,4 +24,8 @@ public class ChatModel {
     public void setMessage(String message){
         this.message = message;
     }
+
+    public Integer getUserID(){return userID;}
+
+    public void setUserID(Integer userID){this.userID = userID;}
 }
