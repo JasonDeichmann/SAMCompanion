@@ -20,13 +20,10 @@
         tools:layout_editor_absoluteY="0dp">
 
 
-        <TextView
-            android:id="@+id/tv_game"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/RecyclerView_Games"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:textSize="30sp"
-            android:text="GAMES" />
+            android:layout_height="match_parent" />
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView

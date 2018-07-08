@@ -3,20 +3,18 @@ package com.example.kayletiu.samcompanion;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabItem;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-import android.widget.Toolbar;
 import android.support.design.widget.TabLayout;
+
+import com.example.kayletiu.samcompanion.GamesActivity.GamesActivity;
 
 public class MainActivity extends AppCompatActivity implements News.OnFragmentInteractionListener, Home.OnFragmentInteractionListener,
 Quotes.OnFragmentInteractionListener{
@@ -76,6 +74,8 @@ Quotes.OnFragmentInteractionListener{
                                 Toast.makeText(MainActivity.this, "Partners!", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.id_menu_exercise:
+                                Intent intent2 = new Intent (MainActivity.this, Exercise.class);
+                                startActivityForResult(intent2, 0);
                                 Toast.makeText(MainActivity.this, "Exercise!", Toast.LENGTH_SHORT).show();
                                 break;
 
