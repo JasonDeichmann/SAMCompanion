@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.MyViewHolder>
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView author, content, title,datePosted;
-        public Button reply;
+        public ImageButton reply;
 
 
         public MyViewHolder(View view) {

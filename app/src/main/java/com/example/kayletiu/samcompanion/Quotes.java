@@ -1,12 +1,33 @@
 package com.example.kayletiu.samcompanion;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -28,6 +49,17 @@ public class Quotes extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private QuotesAdapter qAdapter;
+    private List<Quote> quoteList = new ArrayList<>();
+    private RecyclerView recyclerView;
+
+    private FloatingActionButton fab;
+
+
+    private SharedPreferences preferencesSettings;
+    private SharedPreferences.Editor preferencesEditor;
+
 
     public Quotes() {
         // Required empty public constructor
@@ -64,7 +96,77 @@ public class Quotes extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quotes, container, false);
+        View view = inflater.inflate(R.layout.fragment_quotes, container, false);
+
+        preferencesSettings = PreferenceManager.getDefaultSharedPreferences(view.getContext());
+        preferencesSettings = getContext().getSharedPreferences("MySettings", Context.MODE_PRIVATE);
+
+        boolean init = preferencesSettings.getBoolean("isInitializedQuotes", false);
+        if(!init){
+
+            populateQuotes();
+        }
+        else {
+
+            FileInputStream fis;
+            InputStreamReader isr;
+            BufferedReader br;
+            try {
+
+                fis = getContext().openFileInput("quotes.txt");
+                isr = new InputStreamReader(fis);
+                br = new BufferedReader(isr);
+                StringBuilder sb = new StringBuilder();
+                String user = br.readLine();
+                String content = br.readLine();
+                String author = br.readLine();
+                while (author != null && content != null) {
+                    quoteList.add(new Quote(user, content, author));
+                    user = br.readLine();
+                    content = br.readLine();
+                    author = br.readLine();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+        fab = view.findViewById(R.id.addNewQuote);
+        fab.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddQuote.class);
+                startActivityForResult(intent, 20);
+            }
+        });
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.quotes_recycleView);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        qAdapter = new QuotesAdapter(quoteList);
+        recyclerView.setAdapter(qAdapter);
+        recyclerView.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 16));
+
+
+
+        return view;
+    }
+
+    public void populateQuotes(){
+        quoteList.add(new Quote("goofy", "\"Once you choose hope, anything is possible.\"","Christopher Reeve"));
+        quoteList.add(new Quote("mickey", "\"Maybe you have to know the darkness before you can appreciate the light.\"", "Madeleine L'Engle"));
+        quoteList.add(new Quote("donald", "\"A positive attitude gives you power over your circumstances instead of your circumstances having power over you.\"","Joyce Meyer"));
+        quoteList.add(new Quote("minnie", "\"What the caterpillar calls the end of the world, the master calls a butterfly.\"" ,"Richard Bach"));
+        quoteList.add(new Quote("daisy", "\"Keep yourself busy if you want to avoid depression. For me, inactivity is the enemy.\"","Matt Lucas"));
+
+
+        preferencesEditor = preferencesSettings.edit();
+        preferencesEditor.putBoolean("isInitializedQuotes",true);
+        preferencesEditor.apply();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,5 +206,61 @@ public class Quotes extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == RESULT_OK){
+            Bundle b1 =  data.getExtras();
+
+            String user = "doggy";
+            String content = b1.getString("quoteContent");
+            String author = b1.getString("quoteAuthor");
+            quoteList.add(new Quote(user,"\""+ content + "\"", author));
+            qAdapter.notifyItemInserted(quoteList.size() - 1);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onDestroy() {
+        String filename = "quotes.txt";
+        File file = null;
+        FileOutputStream outputStream = null;
+        try{
+            outputStream = getContext().openFileOutput(filename, Context.MODE_PRIVATE);
+            file = getContext().getFilesDir();
+            for(int i = 0; i < quoteList.size(); i++){
+                outputStream.write((quoteList.get(i).getUser() + "\n").getBytes());
+                outputStream.write((quoteList.get(i).getContent() + "\n").getBytes());
+                outputStream.write((quoteList.get(i).getAuthor() + "\n").getBytes());
+
+            }
+
+
+            outputStream.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        super.onDestroy();
+    }
+    @Override
+    public void onPause() {
+        String filename = "quotes.txt";
+        File file = null;
+        FileOutputStream outputStream = null;
+        try{
+            outputStream = getContext().openFileOutput(filename, Context.MODE_PRIVATE);
+            file = getContext().getFilesDir();
+            for(int i = 0; i < quoteList.size(); i++){
+                outputStream.write((quoteList.get(i).getUser() + "\n").getBytes());
+                outputStream.write((quoteList.get(i).getContent() + "\n").getBytes());
+                outputStream.write((quoteList.get(i).getAuthor() + "\n").getBytes());
+            }
+            outputStream.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        super.onPause();
     }
 }

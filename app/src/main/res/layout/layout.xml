@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
@@ -17,31 +18,39 @@
         android:layout_marginTop="15dp"
         android:orientation="vertical"
         android:padding="5dp">
+
         <TextView
-            android:id="@+id/post_author"
+            android:id="@+id/quote_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Posted by " />
 
         <TextView
-            android:id="@+id/post_dateposted"
+            android:id="@+id/quote_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/post_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="TextView"
-            android:textColor="@android:color/black" />
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_dark"
+            android:textSize="24sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/quote_author"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="TextView"
+                android:textColor="@android:color/background_dark" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageButton
                 android:id="@+id/imageButton3"
@@ -49,11 +58,9 @@
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/heart" />
-
-
-
-
         </RelativeLayout>
 
+
     </LinearLayout>
+
 </FrameLayout>

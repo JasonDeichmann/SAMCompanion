@@ -16,12 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Companion">
-
-        </activity>
-        <activity android:name=".GamesActivity.GamesActivity"></activity>
-        <activity android:name=".GamesActivity.InGame"/>
-        <activity android:name=".Exercise"/>
+        <activity android:name=".Companion"></activity>
+        <activity android:name=".GamesActivity.GamesActivity" />
+        <activity android:name=".GamesActivity.InGame" />
+        <activity android:name=".Exercise" />
         <activity
             android:name=".AddPost"
             android:label="@string/title_activity_add_post"
@@ -30,6 +28,7 @@
             android:name=".ReplyPost"
             android:label="@string/title_activity_reply_post"
             android:theme="@style/AppTheme" />
+        <activity android:name=".AddQuote"></activity>
     </application>
 
 </manifest>

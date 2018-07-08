@@ -282,7 +282,6 @@ public class Home extends Fragment {
     @Override
     public void onDestroy() {
         String filename = "homePosts.txt";
-        Log.d("FUCK",postList.size()+"");
         File file = null;
         FileOutputStream outputStream = null;
         try{
