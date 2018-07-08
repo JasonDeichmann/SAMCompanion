@@ -65,7 +65,6 @@ public class Companion extends AppCompatActivity {
         final RecyclerView.LayoutManager rLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewChat.setLayoutManager(rLayoutManager);
         recyclerViewChat.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewChat.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerViewChat.setAdapter(chatAdapter);
 
         //Get data from firebase

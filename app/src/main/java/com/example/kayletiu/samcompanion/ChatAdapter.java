@@ -1,11 +1,14 @@
 package com.example.kayletiu.samcompanion;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -52,12 +55,23 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
         //Differentiate user message and others
         Log.i("userMsg", chatModel.getMessage() + " " + position);
         holder.message.setText(chatModel.getMessage());
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.FILL_PARENT);
+
         if(chatModel.getUserID() == sharedPref.getInt("userID", 0)){
-            holder.message.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+            params.weight = 1.0f;
+            params.gravity = Gravity.END;
+            holder.message.setLayoutParams(params);
+            holder.message.setBackgroundResource(R.drawable.chat_message);
+            holder.message.setTextColor(Color.WHITE);
             holder.message.setText(chatModel.getMessage());
         }
         else{
-            holder.message.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+            params.weight = 1.0f;
+            params.gravity = Gravity.START;
+            holder.message.setBackgroundResource(R.drawable.chat_message_other);
+            holder.message.setTextColor(Color.BLACK);
+            holder.message.setLayoutParams(params);
             holder.message.setText(chatModel.getMessage());
         }
         //Log.i("userMessage", chatModelList.get(position).getMessage());
