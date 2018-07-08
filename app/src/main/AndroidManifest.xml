@@ -19,6 +19,7 @@
         <activity android:name=".Companion"></activity>
         <activity android:name=".GamesActivity.GamesActivity" />
         <activity android:name=".GamesActivity.InGame" />
+        <activity android:name=".PartnersActivity.PartnersActivity" />
         <activity android:name=".Exercise" />
         <activity
             android:name=".AddPost"

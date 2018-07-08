@@ -44,6 +44,7 @@ public class PartnersActivity extends AppCompatActivity {
         partner = new Partner(R.drawable.icon_ncmh, "National Center For Mental Health", "",
                 "July 20, 2018 \n Mental Health Seminar" +
                         "\n\n August 01, 2018 \n How to cope up with Anxiety Talk");
+        partnerList.add(partner);
         pAdapter.notifyDataSetChanged();
     }
 

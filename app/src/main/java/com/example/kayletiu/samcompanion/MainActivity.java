@@ -15,6 +15,7 @@ import android.widget.Toast;
 import android.support.design.widget.TabLayout;
 
 import com.example.kayletiu.samcompanion.GamesActivity.GamesActivity;
+import com.example.kayletiu.samcompanion.PartnersActivity.PartnersActivity;
 
 public class MainActivity extends AppCompatActivity implements News.OnFragmentInteractionListener, Home.OnFragmentInteractionListener,
 Quotes.OnFragmentInteractionListener{
@@ -73,6 +74,8 @@ Quotes.OnFragmentInteractionListener{
                                 startActivity(companionIntent);
                                 break;
                             case R.id.id_menu_partners:
+                                Intent intentPartners = new Intent(MainActivity.this, PartnersActivity.class);
+                                startActivity(intentPartners);
                                 Toast.makeText(MainActivity.this, "Partners!", Toast.LENGTH_SHORT).show();
                                 break;
                             case R.id.id_menu_exercise:
