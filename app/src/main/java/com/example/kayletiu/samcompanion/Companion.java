@@ -126,7 +126,8 @@ public class Companion extends AppCompatActivity {
                         chatModelList.clear();
                         chatAdapter.notifyDataSetChanged();
                     }
-                    recyclerViewChat.smoothScrollToPosition(recyclerViewChat.getAdapter().getItemCount() - 1);
+                    if(recyclerViewChat.getAdapter().getItemCount() > 0)
+                        recyclerViewChat.smoothScrollToPosition(recyclerViewChat.getAdapter().getItemCount() - 1);
                 }
 
 
