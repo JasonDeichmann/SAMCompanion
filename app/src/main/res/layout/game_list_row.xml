@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/ImageView_GameIcon"
+        android:id="@+id/ImageView_OrgIcon"
         android:layout_width="66dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -31,14 +31,14 @@
         android:text="TextView"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.WindowTitle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Button_Play"
+        app:layout_constraintEnd_toStartOf="@+id/Button_About"
         app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toEndOf="@+id/ImageView_GameIcon"
+        app:layout_constraintStart_toEndOf="@+id/ImageView_OrgIcon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/Button_Play"
+        android:id="@+id/Button_About"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

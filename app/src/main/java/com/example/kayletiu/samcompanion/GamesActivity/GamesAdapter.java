@@ -2,12 +2,9 @@ package com.example.kayletiu.samcompanion.GamesActivity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kayletiu.samcompanion.MainActivity;
 import com.example.kayletiu.samcompanion.R;
 
 import java.util.List;
@@ -46,8 +42,8 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder
             preferencesSettings = PreferenceManager.getDefaultSharedPreferences(view.getContext());
             preferencesSettings = (view.getContext()).getSharedPreferences("MySettings",Context.MODE_PRIVATE);
             name = view.findViewById(R.id.TextView_GamesList_Name);
-            icon = view.findViewById(R.id.ImageView_GameIcon);
-            playbtn = view.findViewById(R.id.Button_Play);
+            icon = view.findViewById(R.id.ImageView_OrgIcon);
+            playbtn = view.findViewById(R.id.Button_About);
         }
 
         public void setupListener(Button button, final int bgurl){
