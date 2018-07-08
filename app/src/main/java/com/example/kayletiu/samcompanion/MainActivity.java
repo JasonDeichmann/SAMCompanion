@@ -69,6 +69,8 @@ Quotes.OnFragmentInteractionListener{
                                 break;
                             case R.id.id_menu_sam:
                                 Toast.makeText(MainActivity.this, "Sam!", Toast.LENGTH_SHORT).show();
+                                Intent companionIntent = new Intent(MainActivity.this, Companion.class);
+                                startActivity(companionIntent);
                                 break;
                             case R.id.id_menu_partners:
                                 Toast.makeText(MainActivity.this, "Partners!", Toast.LENGTH_SHORT).show();

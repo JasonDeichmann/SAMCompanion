@@ -37,6 +37,7 @@ public class Companion extends AppCompatActivity {
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("messages");
     private DatabaseReference usersDatabase = FirebaseDatabase.getInstance().getReference("users");
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,14 +60,13 @@ public class Companion extends AppCompatActivity {
 
 
         //Setup recycler view
-        RecyclerView recyclerViewChat = (RecyclerView) findViewById(R.id.recyclerViewChat);
+        final RecyclerView recyclerViewChat = (RecyclerView) findViewById(R.id.recyclerViewChat);
         chatAdapter = new ChatAdapter(chatModelList, sharedPref);
-        RecyclerView.LayoutManager rLayoutManager = new LinearLayoutManager(getApplicationContext());
+        final RecyclerView.LayoutManager rLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewChat.setLayoutManager(rLayoutManager);
         recyclerViewChat.setItemAnimator(new DefaultItemAnimator());
         recyclerViewChat.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerViewChat.setAdapter(chatAdapter);
-
 
         //Get data from firebase
         try {
@@ -126,7 +126,9 @@ public class Companion extends AppCompatActivity {
                         chatModelList.clear();
                         chatAdapter.notifyDataSetChanged();
                     }
+                    recyclerViewChat.smoothScrollToPosition(recyclerViewChat.getAdapter().getItemCount() - 1);
                 }
+
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {

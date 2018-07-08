@@ -23,21 +23,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView message;
-        public TextView messageOther;
 
         public MyViewHolder(View view){
             super(view);
             message = (TextView) view.findViewById(R.id.textViewChatMessage);
-            messageOther = (TextView) view.findViewById(R.id.textViewChatMessageOtherUser);
         }
 
         public TextView getMessage(){
             return message;
         }
 
-        public TextView getMessageOther(){
-            return messageOther;
-        }
     }
 
     public ChatAdapter(List<ChatModel> chatModelList, SharedPreferences sharedPref){
@@ -55,13 +50,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder>{
     public void onBindViewHolder(MyViewHolder holder, int position){
         ChatModel chatModel = chatModelList.get(position);
         //Differentiate user message and others
-        if(chatModelList.get(position).getUserID() == sharedPref.getInt("userID", 0)){
+        Log.i("userMsg", chatModel.getMessage() + " " + position);
+        holder.message.setText(chatModel.getMessage());
+        if(chatModel.getUserID() == sharedPref.getInt("userID", 0)){
+            holder.message.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             holder.message.setText(chatModel.getMessage());
-            holder.messageOther.setVisibility(GONE);
         }
         else{
-            holder.messageOther.setText(chatModel.getMessage());
-            holder.message.setVisibility(GONE);
+            holder.message.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+            holder.message.setText(chatModel.getMessage());
         }
         //Log.i("userMessage", chatModelList.get(position).getMessage());
     }
