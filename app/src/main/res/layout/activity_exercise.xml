@@ -1,22 +1,414 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:design="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kayletiu.samcompanion.Exercise">
+    android:backgroundTint="@android:color/black"
+    tools:context="com.example.kayletiu.samcompanion.MainActivity">
 
-    <Button
-        android:id="@+id/SHEALTH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="594dp"
+        android:layout_above="@+id/navigation"
+
+        android:animateLayoutChanges="true"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="243dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimaryDark"
+                android:minHeight="?attr/actionBarSize"
+                android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:theme="?attr/actionBarTheme" />
+
+            <TextView
+                android:id="@+id/none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/assistant_l"
+                android:text="    "
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv_exercise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/assistant_l"
+                android:text="      Exercise"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="286dp"
+                android:layout_weight="8"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:columnOrderPreserved="false"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:rowCount="2">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginBottom="16dp"
+
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_rowWeight="1"
+                    android:background="@color/bg1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/footsteps" />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginBottom="16dp"
+
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_rowWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/bike" />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginBottom="16dp"
+
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_rowWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/mind" />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginBottom="16dp"
+
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_rowWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/lungs" />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical">
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ScrollView
+                        android:layout_width="336dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TableLayout
+                                android:id="@+id/simpleTableLayout"
+                                android:layout_width="326dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:stretchColumns="1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:layout_editor_absoluteY="99dp"> <!-- stretch the second column of the layout-->
+
+                                <!-- first row of the table layout-->
+                                <TableRow
+
+                                    android:id="@+id/firstRow"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <!-- first element of the row-->
+
+
+                                    <ImageView
+
+                                        android:id="@+id/run"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/ic_directions_run"
+                                        android:backgroundTint="@color/black"
+                                        android:padding="18dip"
+                                        android:text="Text 1"
+                                        android:textColor="#000"
+                                        android:textSize="12dp" />
+
+                                    <TextView
+
+                                        android:id="@+id/simpleTextView"
+                                        android:layout_width="302dp"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/assistant_l"
+                                        android:padding="18dip"
+                                        android:text="Activity"
+                                        android:textAlignment="gravity"
+                                        android:textColor="#000"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+
+                                </TableRow>
+
+                                <View
+                                    android:layout_height="0.5dip"
+                                    android:background="#FF909090" />
+
+                                <TableRow
+
+                                    android:id="@+id/secondRow"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <!-- first element of the row-->
+
+
+                                    <ImageView
+
+                                        android:id="@+id/heart"
+                                        android:layout_width="47dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/ic_heart"
+                                        android:backgroundTint="@color/black"
+                                        android:padding="18dip"
+                                        android:text="Text 1"
+                                        android:textColor="#000"
+                                        android:textSize="12dp" />
+
+                                    <TextView
+
+                                        android:id="@+id/simpleTextView2"
+                                        android:layout_width="302dp"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/assistant_l"
+                                        android:padding="18dip"
+                                        android:text="Breathing"
+                                        android:textAlignment="gravity"
+                                        android:textColor="#000"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+
+                                </TableRow>
+
+
+                                <View
+                                    android:layout_height="0.5dip"
+                                    android:background="#FF909090" />
+
+                                <TableRow
+
+                                    android:id="@+id/thirdRow"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="100dp">
+
+                                    <!-- first element of the row-->
+
+
+                                    <ImageView
+
+                                        android:id="@+id/music"
+                                        android:layout_width="47dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/ic_mind"
+                                        android:backgroundTint="@color/black"
+                                        android:padding="18dip"
+                                        android:text="Text 1"
+                                        android:textColor="#000"
+                                        android:textSize="12dp" />
+
+                                    <TextView
+
+                                        android:id="@+id/simpleTextView3"
+                                        android:layout_width="302dp"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/assistant_l"
+                                        android:padding="18dip"
+                                        android:text="Music"
+                                        android:textAlignment="gravity"
+                                        android:textColor="#000"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+
+                                </TableRow>
+
+                                <View
+                                    android:layout_height="0.5dip"
+                                    android:background="#FF909090" />
+                                <TableRow
+
+                                    android:id="@+id/fourthRow"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="100dp">
+
+                                    <!-- first element of the row-->
+
+
+                                    <ImageView
+
+                                        android:id="@+id/mind"
+                                        android:layout_width="47dp"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/ic_hear"
+                                        android:backgroundTint="@color/black"
+                                        android:padding="18dip"
+                                        android:text="Mindfulness"
+                                        android:textColor="#000"
+                                        android:textSize="12dp" />
+
+                                    <TextView
+
+                                        android:id="@+id/simpleTextView4"
+                                        android:layout_width="302dp"
+                                        android:layout_height="match_parent"
+                                        android:fontFamily="@font/assistant_l"
+                                        android:padding="18dip"
+                                        android:text="Mindfulness"
+                                        android:textAlignment="gravity"
+                                        android:textColor="#000"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold" />
+
+
+                                </TableRow>
+
+                                <View
+                                    android:layout_height="0.5dip"
+                                    android:background="#FF909090" />
+
+
+                            </TableLayout>
+                            />
+                        </LinearLayout>
+                    </ScrollView>
+
+
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="@android:color/background_light"
+        design:menu="@menu/menu_nav"
+        app:itemBackground="@android:color/background_light"
+
+
+        tools:layout_editor_absoluteY="507dp"
+        >
+
+    </android.support.design.widget.BottomNavigationView>
+
+
+</android.support.design.widget.CoordinatorLayout>
