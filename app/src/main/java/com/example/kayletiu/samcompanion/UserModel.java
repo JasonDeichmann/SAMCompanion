@@ -10,13 +10,19 @@ public class UserModel {
     private String username;
     private String password;
     private Integer userType;
+    private Integer searching;
+    private Integer chatting;
+    private Integer chatRoom;
 
     public UserModel(){}
-    public UserModel(Integer userID, String username, String password, Integer userType){
+    public UserModel(Integer userID, String username, String password, Integer userType, Integer searching, Integer chatting, Integer chatRoom){
         this.userID = userID;
         this.username = username;
         this.password = password;
         this.userType = userType;
+        this.searching = searching;
+        this.chatting = chatting;
+        this.chatRoom = chatRoom;
     }
 
     public Integer getUserID(){return userID;}
@@ -34,5 +40,17 @@ public class UserModel {
     public Integer getUserType(){return userType;}
 
     public void setUserType(Integer userType){this.userType = userType;}
+
+    public Integer getSearching() {return searching;}
+
+    public void setSearching(Integer searching) {this.searching = searching;}
+
+    public Integer getChatting() {return chatting;}
+
+    public void setChatting(Integer chatting) {this.chatting = chatting;}
+
+    public Integer getChatRoom() {return chatRoom;}
+
+    public void setChatRoom(Integer chatRoom) {this.chatRoom = chatRoom;}
 
 }

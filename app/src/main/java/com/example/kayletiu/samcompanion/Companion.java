@@ -57,6 +57,7 @@ public class Companion extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(2);
         menuItem.setChecked(true);
 
+        /*
         bottomNavigationView.setOnNavigationItemSelectedListener
                 (new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -88,7 +89,7 @@ public class Companion extends AppCompatActivity {
                         return true;
                     }
                 });
-
+        */
 
         //Setup EditText
         final EditText edit_txt = (EditText) findViewById(R.id.editTextChatMessage);

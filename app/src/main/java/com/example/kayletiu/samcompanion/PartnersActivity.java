@@ -1,16 +1,20 @@
 package com.example.kayletiu.samcompanion;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +40,7 @@ public class PartnersActivity extends AppCompatActivity {
 
         preparePartnersData();
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navbar);
+        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navbar);
         Helper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(3);
@@ -57,8 +61,36 @@ public class PartnersActivity extends AppCompatActivity {
                                 startActivity(intent2);
                                 break;
                             case R.id.id_menu_sam:
-                                Intent intent3 = new Intent(PartnersActivity.this, Companion.class);
-                                startActivity(intent3);
+                                AlertDialog.Builder companionAlert = new AlertDialog.Builder(PartnersActivity.this);
+                                companionAlert.setTitle("SAM Companion");
+                                companionAlert.setMessage("Would you like to talk to a companion?");
+                                companionAlert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        AlertDialog.Builder searchAlert = new AlertDialog.Builder(PartnersActivity.this);
+                                        LayoutInflater li = LayoutInflater.from(PartnersActivity.this);
+                                        final View view = li.inflate(R.layout.searching_companion, null);
+                                        searchAlert.setTitle("Please wait");
+                                        searchAlert.setMessage("Looking for a Companion...");
+                                        searchAlert.setView(view);
+                                        searchAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                bottomNavigationView.setSelectedItemId(R.id.id_menu_partners);
+                                            }
+                                        });
+                                        searchAlert.show();
+                                        //Intent companionIntent = new Intent(MainActivity.this, Companion.class);
+                                        //startActivity(companionIntent);
+                                    }
+                                });
+                                companionAlert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        bottomNavigationView.setSelectedItemId(R.id.id_menu_partners);
+                                    }
+                                });
+                                companionAlert.show();
                                 break;
                             case R.id.id_menu_partners:
                                 Intent intent4 = new Intent (PartnersActivity.this, PartnersActivity.class);

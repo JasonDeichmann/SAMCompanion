@@ -127,7 +127,7 @@ public class SignupActivity extends AppCompatActivity {
                                         usernameExistAlert.show();
                                     } else {
                                         //Enter new user in the database
-                                        UserModel newUser = new UserModel(latestUserID, user.getText().toString(), pass.getText().toString(), 1);
+                                        UserModel newUser = new UserModel(latestUserID, user.getText().toString(), pass.getText().toString(), 1, 0, 0, 0);
                                         userData.add(newUser);
                                         //Write to database
                                         usersReference.setValue(userData);
@@ -147,7 +147,7 @@ public class SignupActivity extends AppCompatActivity {
                                 } else {
                                     //Assumes there is no user in the database
                                     userData = new ArrayList<UserModel>();
-                                    UserModel newUser = new UserModel(1, user.getText().toString(), pass.getText().toString(), 1);
+                                    UserModel newUser = new UserModel(1, user.getText().toString(), pass.getText().toString(), 1, 0, 0, 0);
                                     userData.add(newUser);
                                     //Write to database
                                     usersReference.setValue(userData);
@@ -157,8 +157,8 @@ public class SignupActivity extends AppCompatActivity {
                                     userCreatedAlert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
-                                            //Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                                            //startActivity(intent);
+                                            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                                            startActivity(intent);
                                         }
                                     });
 

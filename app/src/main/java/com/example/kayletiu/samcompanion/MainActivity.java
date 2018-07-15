@@ -12,8 +12,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 //import com.example.kayletiu.samcompanion.GamesActivity.GamesActivity;
 
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements News.OnFragmentIn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navbar);
+        final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navbar);
         Helper.disableShiftMode(bottomNavigationView);
         // Toolbar toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitle(getResources().getString(R.string.app_name));
@@ -75,14 +77,27 @@ public class MainActivity extends AppCompatActivity implements News.OnFragmentIn
                                 companionAlert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        Intent companionIntent = new Intent(MainActivity.this, CompanionLobby.class);
-                                        startActivity(companionIntent);
+                                        AlertDialog.Builder searchAlert = new AlertDialog.Builder(MainActivity.this);
+                                        LayoutInflater li = LayoutInflater.from(MainActivity.this);
+                                        final View view = li.inflate(R.layout.searching_companion, null);
+                                        searchAlert.setTitle("Please wait");
+                                        searchAlert.setMessage("Looking for a Companion...");
+                                        searchAlert.setView(view);
+                                        searchAlert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                bottomNavigationView.setSelectedItemId(R.id.id_menu_community);
+                                            }
+                                        });
+                                        searchAlert.show();
+                                        //Intent companionIntent = new Intent(MainActivity.this, Companion.class);
+                                        //startActivity(companionIntent);
                                     }
                                 });
                                 companionAlert.setNegativeButton("No", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                                        bottomNavigationView.setSelectedItemId(R.id.id_menu_community);
                                     }
                                 });
                                 companionAlert.show();
