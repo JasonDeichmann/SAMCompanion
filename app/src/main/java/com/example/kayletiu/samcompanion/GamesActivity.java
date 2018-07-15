@@ -1,4 +1,4 @@
-package com.example.kayletiu.samcompanion.GamesActivity;
+package com.example.kayletiu.samcompanion;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.kayletiu.samcompanion.Helper;
-import com.example.kayletiu.samcompanion.MainActivity;
-import com.example.kayletiu.samcompanion.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,23 +56,25 @@ public class GamesActivity extends AppCompatActivity {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.id_menu_community:
-                                Intent intent1 = new Intent(GamesActivity.this, MainActivity.class);
-                                startActivity(intent1);
-                                Toast.makeText(GamesActivity.this, "com.example.kayletiu.samcompanion.Community!", Toast.LENGTH_SHORT).show();
+                                Intent intent1 = new Intent (GamesActivity.this, ExerciseActivity.class);
+                                startActivityForResult(intent1, 0);
                                 break;
                             case R.id.id_menu_games:
-                                Toast.makeText(GamesActivity.this, "Games!", Toast.LENGTH_SHORT).show();
+                                Intent intent2 = new Intent(GamesActivity.this, GamesActivity.class);
+                                startActivity(intent2);
                                 break;
                             case R.id.id_menu_sam:
-                                Toast.makeText(GamesActivity.this, "Sam!", Toast.LENGTH_SHORT).show();
+                                Intent intent3 = new Intent(GamesActivity.this, Companion.class);
+                                startActivity(intent3);
                                 break;
                             case R.id.id_menu_partners:
-                                Toast.makeText(GamesActivity.this, "Partners!", Toast.LENGTH_SHORT).show();
+                                Intent intent4 = new Intent (GamesActivity.this, PartnersActivity.class);
+                                startActivityForResult(intent4, 0);
                                 break;
                             case R.id.id_menu_exercise:
-                                Toast.makeText(GamesActivity.this, "Exercise!", Toast.LENGTH_SHORT).show();
+                                Intent intent5 = new Intent (GamesActivity.this, ExerciseActivity.class);
+                                startActivityForResult(intent5, 0);
                                 break;
-
                         }
 
                         return true;

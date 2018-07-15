@@ -22,12 +22,15 @@
             android:id="@+id/post_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Posted by " />
+            android:fontFamily="@font/assistant_l"
+            android:text="Posted by "
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/post_dateposted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/assistant_l"
             android:text="TextView" />
 
         <TextView
@@ -35,52 +38,60 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/assistant_l"
             android:text="TextView"
             android:textAllCaps="false"
             android:textColor="@android:color/background_dark"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/post_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/assistant_l"
             android:text="TextView"
             android:textColor="@android:color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="37dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
-
-            <RelativeLayout
+            <TextView
                 android:layout_width="160dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/heart" />
-            </RelativeLayout>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/ic_heart"
+                android:backgroundTint="@color/bg1" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1"
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
-                <ImageButton
-                    android:id="@+id/post_reply"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/ic_face" />
-            </RelativeLayout>
-
-
+            <Button
+                android:id="@+id/post_reply"
+                android:layout_width="9dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/ic_reply"
+                android:backgroundTint="@color/black" />
         </LinearLayout>
 
     </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.kayletiu.samcompanion.PartnersActivity;
+package com.example.kayletiu.samcompanion;
 
 /**
  * Created by Kayle Tiu on 08/07/2018.

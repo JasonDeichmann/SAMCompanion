@@ -1,4 +1,4 @@
-package com.example.kayletiu.samcompanion.GamesActivity;
+package com.example.kayletiu.samcompanion;
 
 import android.app.Activity;
 import android.content.Context;

@@ -6,54 +6,85 @@
     android:layout_height="match_parent"
     tools:context="com.example.kayletiu.samcompanion.AddPost">
 
-    <RelativeLayout
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="567dp">
+        android:layout_height="615dp">
 
         <Button
             android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="26dp"
+            android:layout_height="34dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="27dp"
-            android:text="Back" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/text_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="331dp"
+            android:layout_height="51dp"
             android:layout_alignStart="@+id/btn_back"
             android:layout_below="@+id/btn_back"
-            android:layout_marginTop="23dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="76dp"
+            android:background="@drawable/border_et"
             android:contentDescription="Title"
             android:ems="10"
-            android:hint="Title..."
-            android:inputType="textPersonName" />
+            android:fontFamily="@font/assistant_l"
+            android:hint="   Title"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.123"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/text_post"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="381dp"
+            android:layout_height="431dp"
             android:layout_alignStart="@+id/text_title"
             android:layout_below="@+id/text_title"
-            android:layout_marginTop="34dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/border_et"
             android:contentDescription="Write something here..."
             android:ems="10"
-            android:hint="Write something here..."
-            android:inputType="textMultiLine" />
+            android:fontFamily="@font/assistant_l"
+            android:hint="   Write something here"
+            android:inputType="textMultiLine"
+            android:minLines="20"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_title"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btn_send"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/text_post"
             android:layout_below="@+id/text_post"
-            android:layout_marginTop="36dp"
-            android:text="Send" />
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="76dp"
+            android:background="@android:drawable/ic_menu_send"
+            android:backgroundTint="@color/bg1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -63,5 +94,35 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginEnd="248dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/assistant_l"
+
+            android:text="Back"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/btn_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="@android:color/background_light"
+        app:menu="@menu/menu_nav"
+        tools:layout_editor_absoluteY="507dp">
+
+    </android.support.design.widget.BottomNavigationView>
 </android.support.design.widget.CoordinatorLayout>

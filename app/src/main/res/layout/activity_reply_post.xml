@@ -9,47 +9,96 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="1000dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
         android:orientation="vertical"
         android:padding="5dp">
 
+
         <TextView
             android:id="@+id/reply_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/assistant_l"
             android:text="TextView"
             android:textColor="@android:color/background_dark"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview_reply"
             android:layout_width="match_parent"
-            android:layout_height="272dp" >
+            android:layout_height="429dp">
 
         </android.support.v7.widget.RecyclerView>
 
-        <EditText
-            android:id="@+id/reply_reply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="Reply..."
-            android:inputType="textMultiLine"
-            android:singleLine="false"
-            tools:ignore="DuplicateIds" />
 
-        <Button
-            android:id="@+id/reply_button"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Reply" />
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:layout_width="334dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/reply_reply"
+                        android:layout_width="306dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/border_et"
+
+                        android:ems="10"
+                        android:fontFamily="@font/assistant_l"
+                        android:inputType="textMultiLine"
+                        android:singleLine="false"
+                        android:text="   Reply"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/black"
+                        android:textColorLink="@color/black"
+                        tools:ignore="DuplicateIds" />
+
+                    <Button
+                        android:id="@+id/reply_button"
+                        android:layout_width="33dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/ic_menu_send" />
+
+
+                </TableRow>
+
+
+            </TableLayout>
+        </android.support.constraint.ConstraintLayout>
 
 
     </LinearLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="bottom"
+        android:background="@android:color/background_light"
+        app:menu="@menu/menu_nav"
+        tools:layout_editor_absoluteY="507dp">
+
+    </android.support.design.widget.BottomNavigationView>
+
 
 </RelativeLayout>

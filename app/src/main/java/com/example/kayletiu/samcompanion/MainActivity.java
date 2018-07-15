@@ -1,41 +1,29 @@
 package com.example.kayletiu.samcompanion;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.preference.PreferenceManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabItem;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-import android.support.design.widget.TabLayout;
 
-import com.example.kayletiu.samcompanion.GamesActivity.GamesActivity;
-import com.example.kayletiu.samcompanion.PartnersActivity.PartnersActivity;
+//import com.example.kayletiu.samcompanion.GamesActivity.GamesActivity;
 
 public class MainActivity extends AppCompatActivity implements News.OnFragmentInteractionListener, Home.OnFragmentInteractionListener,
-Quotes.OnFragmentInteractionListener{
+        Quotes.OnFragmentInteractionListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //Check loggedOn
-        final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        final SharedPreferences.Editor editor = sharedPref.edit();
-        Log.i("loggedOn", sharedPref.getBoolean("loggedOn", false) + " MainActivity");
-
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navbar);
         Helper.disableShiftMode(bottomNavigationView);
-       // Toolbar toolbar = findViewById(R.id.toolbar);
+        // Toolbar toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitle(getResources().getString(R.string.app_name));
         TabLayout tabLayout = findViewById(R.id.tablayout);
         TabItem tabChats = findViewById(R.id.tabNews);
@@ -71,29 +59,25 @@ Quotes.OnFragmentInteractionListener{
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.id_menu_community:
-                                Toast.makeText(MainActivity.this, "com.example.kayletiu.samcompanion.Community!", Toast.LENGTH_SHORT).show();
+                                Intent intent1 = new Intent (MainActivity.this, ExerciseActivity.class);
+                                startActivityForResult(intent1, 0);
                                 break;
                             case R.id.id_menu_games:
-                                Intent intent1 = new Intent(MainActivity.this, GamesActivity.class);
-                                startActivity(intent1);
-                                Toast.makeText(MainActivity.this, "Games!", Toast.LENGTH_SHORT).show();
+                                Intent intent2 = new Intent(MainActivity.this, GamesActivity.class);
+                                startActivity(intent2);
                                 break;
                             case R.id.id_menu_sam:
-                                Toast.makeText(MainActivity.this, "Sam!", Toast.LENGTH_SHORT).show();
-                                Intent companionIntent = new Intent(MainActivity.this, Companion.class);
-                                startActivity(companionIntent);
+                                Intent intent3 = new Intent(MainActivity.this, Companion.class);
+                                startActivity(intent3);
                                 break;
                             case R.id.id_menu_partners:
-                                Intent intentPartners = new Intent(MainActivity.this, PartnersActivity.class);
-                                startActivity(intentPartners);
-                                Toast.makeText(MainActivity.this, "Partners!", Toast.LENGTH_SHORT).show();
+                                Intent intent4 = new Intent (MainActivity.this, PartnersActivity.class);
+                                startActivityForResult(intent4, 0);
                                 break;
                             case R.id.id_menu_exercise:
-                                Intent intent2 = new Intent (MainActivity.this, Exercise.class);
-                                startActivityForResult(intent2, 0);
-                                Toast.makeText(MainActivity.this, "Exercise!", Toast.LENGTH_SHORT).show();
+                                Intent intent5 = new Intent (MainActivity.this, ExerciseActivity.class);
+                                startActivityForResult(intent5, 0);
                                 break;
-
                         }
 
                         return true;
@@ -101,7 +85,7 @@ Quotes.OnFragmentInteractionListener{
                 });
 
 
-}
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
