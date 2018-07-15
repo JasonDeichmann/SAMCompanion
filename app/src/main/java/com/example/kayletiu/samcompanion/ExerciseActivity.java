@@ -59,7 +59,7 @@ public class ExerciseActivity extends AppCompatActivity {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.id_menu_community:
-                                Intent intent1 = new Intent (ExerciseActivity.this, ExerciseActivity.class);
+                                Intent intent1 = new Intent (ExerciseActivity.this, MainActivity.class);
                                 startActivityForResult(intent1, 0);
                                 break;
                             case R.id.id_menu_games:

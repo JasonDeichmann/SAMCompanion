@@ -1,5 +1,6 @@
 package com.example.kayletiu.samcompanion;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements News.OnFragmentIn
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.id_menu_community:
-                                Intent intent1 = new Intent (MainActivity.this, ExerciseActivity.class);
+                                Intent intent1 = new Intent (MainActivity.this, MainActivity.class);
                                 startActivityForResult(intent1, 0);
                                 break;
                             case R.id.id_menu_games:
@@ -67,8 +69,23 @@ public class MainActivity extends AppCompatActivity implements News.OnFragmentIn
                                 startActivity(intent2);
                                 break;
                             case R.id.id_menu_sam:
-                                Intent intent3 = new Intent(MainActivity.this, Companion.class);
-                                startActivity(intent3);
+                                AlertDialog.Builder companionAlert = new AlertDialog.Builder(MainActivity.this);
+                                companionAlert.setTitle("SAM Companion");
+                                companionAlert.setMessage("Would you like to talk to a companion?");
+                                companionAlert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Intent companionIntent = new Intent(MainActivity.this, CompanionLobby.class);
+                                        startActivity(companionIntent);
+                                    }
+                                });
+                                companionAlert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                });
+                                companionAlert.show();
                                 break;
                             case R.id.id_menu_partners:
                                 Intent intent4 = new Intent (MainActivity.this, PartnersActivity.class);

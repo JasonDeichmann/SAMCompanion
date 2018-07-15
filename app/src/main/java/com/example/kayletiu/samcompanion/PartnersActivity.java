@@ -39,7 +39,7 @@ public class PartnersActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navbar);
         Helper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(1);
+        MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener
@@ -49,7 +49,7 @@ public class PartnersActivity extends AppCompatActivity {
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.id_menu_community:
-                                Intent intent1 = new Intent (PartnersActivity.this, ExerciseActivity.class);
+                                Intent intent1 = new Intent (PartnersActivity.this, MainActivity.class);
                                 startActivityForResult(intent1, 0);
                                 break;
                             case R.id.id_menu_games:

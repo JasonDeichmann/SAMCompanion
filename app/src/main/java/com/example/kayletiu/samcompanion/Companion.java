@@ -1,7 +1,12 @@
 package com.example.kayletiu.samcompanion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -10,6 +15,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -43,12 +50,51 @@ public class Companion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_companion);
 
+        //Navbar
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navbar);
+        Helper.disableShiftMode(bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(2);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener
+                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        Fragment selectedFragment = null;
+                        switch (item.getItemId()) {
+                            case R.id.id_menu_community:
+                                Intent intent1 = new Intent (Companion.this, MainActivity.class);
+                                startActivityForResult(intent1, 0);
+                                break;
+                            case R.id.id_menu_games:
+                                Intent intent2 = new Intent(Companion.this, GamesActivity.class);
+                                startActivity(intent2);
+                                break;
+                            case R.id.id_menu_sam:
+                                Intent intent3 = new Intent(Companion.this, Companion.class);
+                                startActivity(intent3);
+                                break;
+                            case R.id.id_menu_partners:
+                                Intent intent4 = new Intent (Companion.this, PartnersActivity.class);
+                                startActivityForResult(intent4, 0);
+                                break;
+                            case R.id.id_menu_exercise:
+                                Intent intent5 = new Intent (Companion.this, ExerciseActivity.class);
+                                startActivityForResult(intent5, 0);
+                                break;
+                        }
+
+                        return true;
+                    }
+                });
+
+
         //Setup EditText
         final EditText edit_txt = (EditText) findViewById(R.id.editTextChatMessage);
 
-
         //Setup sharedPreferences
-        final SharedPreferences sharedPref = Companion.this.getPreferences(Context.MODE_PRIVATE);
+        final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor editor = sharedPref.edit();
         //editor.putString("userID", "1");
         //editor.clear();
@@ -69,44 +115,6 @@ public class Companion extends AppCompatActivity {
 
         //Get data from firebase
         try {
-            //Get users/create new user
-            ValueEventListener usersListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    GenericTypeIndicator<List<Integer>> userType = new GenericTypeIndicator<List<Integer>>(){};
-                    userData = dataSnapshot.getValue(userType);
-                    if(userData != null){
-                        if(userData.contains(sharedPref.getInt("userID", 0))){
-                            Log.i("userID", "already exists");
-                        }
-                        else {
-                            Integer latestUserID = userData.get(userData.size() - 1) + 1;
-                            Log.i("userID-NextHighest", Integer.toString(latestUserID));
-                            userData.add(latestUserID);
-                            editor.putInt("userID", latestUserID);
-                            editor.apply();
-                            //Write to database
-                            usersDatabase.setValue(userData);
-                        }
-                    }
-                    else{
-                        editor.putInt("userID", 1);
-                        editor.apply();
-                        userData = new ArrayList<Integer>();
-                        userData.add(1);
-                        //Write to database
-                        usersDatabase.setValue(userData);
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.i("Error", "error getting users");
-                }
-            };
-            usersDatabase.addValueEventListener(usersListener);
-
             //Get all messages
             ValueEventListener postListener = new ValueEventListener() {
                 @Override
