@@ -9,12 +9,14 @@ public class UserModel {
     private Integer userID;
     private String username;
     private String password;
+    private Integer userType;
 
     public UserModel(){}
-    public UserModel(Integer userID, String username, String password){
+    public UserModel(Integer userID, String username, String password, Integer userType){
         this.userID = userID;
         this.username = username;
         this.password = password;
+        this.userType = userType;
     }
 
     public Integer getUserID(){return userID;}
@@ -28,5 +30,9 @@ public class UserModel {
     public String getPassword(){return password;}
 
     public void setPassword(String password){this.password = password;}
+
+    public Integer getUserType(){return userType;}
+
+    public void setUserType(Integer userType){this.userType = userType;}
 
 }

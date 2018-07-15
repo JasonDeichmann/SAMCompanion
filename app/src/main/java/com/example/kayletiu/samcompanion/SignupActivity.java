@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -46,7 +47,7 @@ public class SignupActivity extends AppCompatActivity {
         //UserPassword - firebase
         //loggedOn - local
 
-        final SharedPreferences sharedPref = SignupActivity.this.getPreferences(Context.MODE_PRIVATE);
+        final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor editor = sharedPref.edit();
 
         //Check if user is already logged in
@@ -58,7 +59,7 @@ public class SignupActivity extends AppCompatActivity {
         else{
             editor.putBoolean("loggedOn", false);
             editor.apply();
-            Log.i("loggedOn", "false");
+            Log.i("loggedOn", "false" + " " + sharedPref.getBoolean("loggedOn", false));
         }
 
         setContentView(R.layout.activity_signup);
@@ -126,7 +127,7 @@ public class SignupActivity extends AppCompatActivity {
                                         usernameExistAlert.show();
                                     } else {
                                         //Enter new user in the database
-                                        UserModel newUser = new UserModel(latestUserID, user.getText().toString(), pass.getText().toString());
+                                        UserModel newUser = new UserModel(latestUserID, user.getText().toString(), pass.getText().toString(), 1);
                                         userData.add(newUser);
                                         //Write to database
                                         usersReference.setValue(userData);
@@ -146,7 +147,7 @@ public class SignupActivity extends AppCompatActivity {
                                 } else {
                                     //Assumes there is no user in the database
                                     userData = new ArrayList<UserModel>();
-                                    UserModel newUser = new UserModel(1, user.getText().toString(), pass.getText().toString());
+                                    UserModel newUser = new UserModel(1, user.getText().toString(), pass.getText().toString(), 1);
                                     userData.add(newUser);
                                     //Write to database
                                     usersReference.setValue(userData);
