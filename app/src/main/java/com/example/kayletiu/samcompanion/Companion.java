@@ -36,6 +36,7 @@ import java.util.List;
 public class Companion extends AppCompatActivity {
 
     private List<ChatModel> list = new ArrayList<>();
+    private List<ChatModel> chatRoomList = new ArrayList<>();
     List<ChatModel> newData = new ArrayList<ChatModel>();
     List<Integer> userData = new ArrayList<Integer>();
     private List<ChatModel> chatModelList = new ArrayList<>();
@@ -51,13 +52,14 @@ public class Companion extends AppCompatActivity {
         setContentView(R.layout.activity_companion);
 
         //Navbar
+        /*
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navbar);
         Helper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(2);
         menuItem.setChecked(true);
 
-        /*
+
         bottomNavigationView.setOnNavigationItemSelectedListener
                 (new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -124,9 +126,16 @@ public class Companion extends AppCompatActivity {
                     newData = dataSnapshot.getValue(type);
                     if(newData != null) {
                         list.clear();
+                        chatRoomList.clear();
                         list.addAll(newData);
+                        for(int x = 0; x < list.size(); x++){
+                            Log.i("chatting", sharedPref.getInt("chatRoom", 0) + " chat room");
+                            if(list.get(x).getChatRoom() == sharedPref.getInt("chatRoom", 0)){
+                                chatRoomList.add(list.get(x));
+                            }
+                        }
                         chatModelList.clear();
-                        chatModelList.addAll(newData);
+                        chatModelList.addAll(chatRoomList);
                         chatAdapter.notifyDataSetChanged();
                     }
                     else{
@@ -157,7 +166,7 @@ public class Companion extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                   list.add(new ChatModel(edit_txt.getText().toString(), sharedPref.getInt("userID", 0)));
+                   list.add(new ChatModel(edit_txt.getText().toString(), sharedPref.getInt("userID", 0), sharedPref.getInt("chatRoom", 0)));
 
                     //Write to database
                     mDatabase.setValue(list);
