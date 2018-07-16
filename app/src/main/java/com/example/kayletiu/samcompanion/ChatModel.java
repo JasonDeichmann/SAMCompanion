@@ -8,13 +8,15 @@ public class ChatModel {
 
     private String message;
     private Integer userID;
+    private Integer chatRoom;
 
 
     public ChatModel(){}
 
-    public ChatModel(String message, Integer userID){
+    public ChatModel(String message, Integer userID, Integer chatRoom){
         this.message = message;
         this.userID = userID;
+        this.chatRoom = chatRoom;
     }
 
     public String getMessage(){
@@ -28,4 +30,8 @@ public class ChatModel {
     public Integer getUserID(){return userID;}
 
     public void setUserID(Integer userID){this.userID = userID;}
+
+    public Integer getChatRoom(){return chatRoom;}
+
+    public void setChatRoom(Integer chatRoom){this.chatRoom = chatRoom;}
 }
